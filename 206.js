@@ -10,33 +10,22 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
-  function ListNode(val, next) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
+  if (!head) return null;
 
-  if (typeof head?.val !== "number") return null;
+  let curr = head;
+  let prev = null;
+  let next = head.next;
 
-  const result = new ListNode();
-  let current = result;
-  let p = head;
-  let pre = null;
-  while (p) {
-    if (p.next) {
-      pre = p;
-      p = p.next;
+  while (curr) {
+    next = curr.next;
+    if (prev) {
+      curr.next = prev;
     } else {
-      current.val = p.val;
-      if (pre) {
-        current.next = new ListNode();
-        current = current.next;
-        pre.next = null;
-        pre = null;
-        p = head;
-      } else {
-        break;
-      }
+      curr.next = null;
     }
+    prev = curr;
+    curr = next;
   }
-  return result;
+
+  return prev;
 };
