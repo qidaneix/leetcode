@@ -13,7 +13,7 @@ var isPalindrome = function (s) {
     return true;
   }
 
-  const reg = /^[a-z]$/i;
+  const reg = /^[a-z0-9]$/i;
   let str = "";
   for (let i = 0; i < s.length; i++) {
     const char = s[i];

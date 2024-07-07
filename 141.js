@@ -11,14 +11,14 @@
  * @return {boolean}
  */
 var hasCycle = function (head) {
+  const set = new Set();
   let node = head;
   while (node) {
-    // 检查是否染色
-    if (node.colored) {
+    if (set.has(node)) {
       return true;
     }
 
-    node.colored = true;
+    set.add(node);
     node = node.next;
   }
   return false;
